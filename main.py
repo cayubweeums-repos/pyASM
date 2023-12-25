@@ -51,8 +51,10 @@ def main():
     log.error('This is an ERROR log <module> fdj')
     log.critical('This is an CRITICAL log. GET')
 
-    console.print("Goodbye :fire:", style="bold green")
+    console.print("Main func over :fire:", style="bold green")
+
+    
 
 
-
-main()
+if __name__ == "__main__":
+    main()
