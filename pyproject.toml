@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "pyasm"
+version = "0.1.0"
+description = "ASM tool made with python"
+authors = ["Cayubweeums <calebwill165@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+rich = "^13.7.0"
+flet = "^0.18.0"
+flet-material = "^0.3.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
