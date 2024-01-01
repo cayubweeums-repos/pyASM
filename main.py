@@ -34,8 +34,11 @@ console = Console()
 install()
 pretty.install()
 _time = datetime.date.today()
-if not os.path.exists('data/logs'):
+if not os.path.exists('data'):
+    os.makedirs('data')
     os.makedirs('data/logs')
+    os.makedirs('data/objects')
+    os.mknod('data/objects/target_data.pkl')
 FORMAT = '%(asctime)s %(levelname)-8s %(message)s'
 logging.basicConfig(filename='data/logs/{}.log'.format(_time), format=FORMAT, level=logging.INFO, datefmt="[%X]")
 log = logging.getLogger("rich")
@@ -58,9 +61,6 @@ def main():
         targets.Target('echo', '192.168.2.20'),
         targets.Target('consus', '192.168.2.21')
     ]
-
-    if not os.path.exists('data/objects/target_data.pkl'):
-        os.mknod('data/objects/target_data.pkl')
 
     targets.save_object(target_list, 'data/objects/target_data.pkl')
 
