@@ -1,6 +1,8 @@
 import random
 import flet as ft
-from objects.sidebar import NavBar
+from sidebar import NavBar
+from background_page import bg_page
+from views import views_handler
 
 
 """
@@ -27,12 +29,11 @@ def main(page: ft.Page):
         page_2.controls[0].border_radius = 30
         page_2.update()
 
-    def grow(e):
-        page_2.controls[0].width = page.width
-        page_2.controls[0].scale = ft.transform.Scale(1,alignment=ft.alignment.center_right)
-        page_2.controls[0].border_radius = 0
-        page_2.update()
-
+    # def grow(e):
+    #     page_2.controls[0].width = page.width
+    #     page_2.controls[0].scale = ft.transform.Scale(1,alignment=ft.alignment.center_right)
+    #     page_2.controls[0].border_radius = 0
+    #     page_2.update()
 
     def page_resize(e):  # <<< new
         # Pops up a message from page bottom side.
@@ -54,6 +55,15 @@ def main(page: ft.Page):
             height=40,
             on_click=lambda _: page.go('/'),
             content=ft.Text('x'),       
+        )
+    )
+
+    targets_view = ft.Container(
+        content=ft.Container(
+            width=200,
+            height=200,
+            on_click=lambda _: page.go('/'),
+            content=ft.Text('click me this is the targets page'),       
         )
     )
 
@@ -173,30 +183,30 @@ def main(page: ft.Page):
         )
     )
 
-    page_1 = ft.Container(
-        width=page.width,
-        height=page.height,
-        bgcolor=SECOND_BG,
-        padding=ft.padding.only(
-            top=50,bottom=5,
-            left=20,right=20
-        ),
-        content=ft.Column(
-            controls=[
-                ft.Container(
-                    on_click=lambda e: grow(e),
-                    content=ft.Text('<')
-                ),
-                ft.Container(
-                    width=page.width * 0.1,
-                    height=page.height,
-                    bgcolor=SECOND_BG,
-                    alignment=ft.alignment.center,
-                    content=NavBar()
-                )
-            ]
-        )
-    )
+    # page_1 = ft.Container(
+    #     width=page.width,
+    #     height=page.height,
+    #     bgcolor=SECOND_BG,
+    #     padding=ft.padding.only(
+    #         top=50,bottom=5,
+    #         left=20,right=20
+    #     ),
+    #     content=ft.Column(
+    #         controls=[
+    #             ft.Container(
+    #                 on_click=lambda e: grow(e),
+    #                 content=ft.Text('<')
+    #             ),
+    #             ft.Container(
+    #                 width=page.width * 0.1,
+    #                 height=page.height,
+    #                 bgcolor=SECOND_BG,
+    #                 alignment=ft.alignment.center,
+    #                 content=NavBar(page)
+    #             )
+    #         ]
+    #     )
+    # )
     page_2 = ft.Row(
         alignment='end',
         controls=[
@@ -225,7 +235,7 @@ def main(page: ft.Page):
         bgcolor=PRIM_BG,
         content=ft.Stack(
             controls=[
-                page_1,
+                bg_page(page, page_2),
                 page_2
             ]
         )
@@ -245,8 +255,20 @@ def main(page: ft.Page):
                 create_test_view
             ],
         ),
+        '/targets': ft.View(
+            "/targets",
+            [
+                targets_view
+            ],
+        ),
 
     }
+
+    # def route_change(route):
+    #     page.views.clear()
+    #     page.views.append(
+    #         views_handler(page)
+    #     )
 
     def route_change(route):
         page.views.clear()
@@ -257,7 +279,6 @@ def main(page: ft.Page):
     page.on_route_change = route_change
     page.go(page.route)
 
-    # page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
     page.add(container)
 
 if __name__ == '__main__':

@@ -20,8 +20,9 @@ ACCENT_LIGHTER = '#8BC34A' # Lighter Green for Highlights
 
 # Sidebar object
 class NavBar(UserControl):
-    def __init__(self):
+    def __init__(self,page):
         super().__init__()
+        self.page = page
 
     def Highlight(self, e):
         if e.data == 'true':
@@ -82,6 +83,7 @@ class NavBar(UserControl):
         return Container(
             border_radius=10,
             on_hover=lambda e: self.Highlight(e),
+            on_click=lambda _: self.page.go('/' + text.lower()),
             content=ft.Row(
                 controls=[
                     ft.IconButton(
