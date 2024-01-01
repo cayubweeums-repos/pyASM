@@ -113,9 +113,12 @@ class NavBar(UserControl):
                 controls=[
                     self.UserData("CW", 'Cayub Weeums', 'Pro. Weener Licker'),
                     ft.Divider(height=5, color='transparent'),
-                    self.ContainedIcon(ft.icons.SEARCH, 'Search'),
+                    self.ContainedIcon(
+                        ft.icons.SEARCH, 
+                        'Search'
+                    ),
                     self.ContainedIcon(ft.icons.DASHBOARD_ROUNDED, 'Dashboard'),
-                    self.ContainedIcon(ft.icons.BAR_CHART, 'Stats'),
+                    self.ContainedIcon(ft.icons.REMOVE_RED_EYE, 'Targets'),
                     self.ContainedIcon(ft.icons.NOTIFICATIONS, 'Alerts'),
                 ]
             ),
