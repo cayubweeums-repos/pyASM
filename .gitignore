@@ -162,3 +162,4 @@ cython_debug/
 # Manual Additions
 data/logs/*.log
 data/objects/*.pkl
+node_modules
