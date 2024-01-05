@@ -12,6 +12,13 @@ Commitizen was used for commits to be standardized. Install with:
 ```
 npm install commitizen -g
 ```
+
+After you clone the repo
+```
+npm install cz-conventional-changelog --save-dev &&
+commitizen init cz-conventional-changelog --save-dev --save-exact
+```
+
 Make all commits with:
 ```
 git cz
