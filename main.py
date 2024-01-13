@@ -6,6 +6,8 @@ from rich.traceback import install
 from rich import pretty
 from rich.console import Console
 import _pickle as pickle
+import flet as ft
+from web.app import Main
 
 
 from objects import targets
@@ -56,20 +58,23 @@ def main():
     log.error('This is an ERROR log <module> fdj')
     log.critical('This is an CRITICAL log. GET')
 
-    target_list = [
-        targets.Target('ananke', '192.168.2.2'),
-        targets.Target('echo', '192.168.2.20'),
-        targets.Target('consus', '192.168.2.21')
-    ]
+    # target_list = [
+    #     targets.Target('ananke', '192.168.2.2'),
+    #     targets.Target('echo', '192.168.2.20'),
+    #     targets.Target('consus', '192.168.2.21')
+    # ]
 
-    targets.save_object(target_list, 'data/objects/target_data.pkl')
+    # targets.save_object(target_list, 'data/objects/target_data.pkl')
 
-    tmp_loaded_targets = targets.pickle_loader('data/objects/target_data.pkl')
+    # tmp_loaded_targets = targets.pickle_loader('data/objects/target_data.pkl')
 
-    console.print(tmp_loaded_targets)
+    # console.print(tmp_loaded_targets)
 
-    console.print('Targets currently in pickle file:')
-    console.print(tmp_loaded_targets[0])
+    # console.print('Targets currently in pickle file:')
+    # console.print(tmp_loaded_targets[0])
+
+    ft.app(target=Main, view=ft.AppView.WEB_BROWSER)
+    
 
     console.print("Main func over :fire:", style="bold green")
 

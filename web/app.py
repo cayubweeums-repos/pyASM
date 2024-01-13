@@ -1,7 +1,7 @@
 import flet as ft
 from flet import UserControl
-from pages.targets import Targets_Page
-from pages.dashboard import Dashboard_Page
+from web.pages.targets import Targets_Page
+from web.pages.dashboard import Dashboard_Page
 
 # TODO
 #  Make basic, minimal, exclusivley functional structure and feature set that does not take into account asthetics, or anything else.
@@ -42,5 +42,5 @@ class Main(UserControl):
 
 
 
-if __name__ == '__main__':
-    ft.app(target=Main, view=ft.AppView.WEB_BROWSER)
+# if __name__ == '__main__':
+#     ft.app(target=Main, view=ft.AppView.WEB_BROWSER)

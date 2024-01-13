@@ -1,6 +1,6 @@
 import flet as ft
 from flet import Container
-from utils.colors import *
+from web.utils.colors import *
 
 class Dashboard_Page(Container):
     def __init__(self, page: ft.Page):
